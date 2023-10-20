@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBS PREDICTION APP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            background-color: #cac0c0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000;
+        }
+
+        label {
+            font-weight: normal;
+            color: #000000;
+        }
+
+        p {
+            color: #000000;
+
+        }
+
+        .input-container {
+            margin: 10px;
+        }
+
+        .input-container label,
+        .input-container select {
+            display: block;
+            width: 100%;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            box-sizing: border-box;
+            min-width: 200px;
+        }
+
+        button {
+            background-color: #023a03;
+            color: #ff0000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #001801;
+        }
+
+        .num_cols, .cat_cols{
+        	display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+		<div class="ml-container">
+			<div class="container">
+				<h1>PREDICTION APP: Mortgage Loan Prepayment Risk </h1>
+                <p>This app aims to evaluate the prepayment risk on the Mortgage Backed Securities to help investors take the right decisions</p>
+				<form action="{{ url_for('predict')}}" method="POST">
+					<div class="cat_cols">
+						{% for key, value in cat_cols.items() %}
+							<div class="input-container">
+								<label for="{{key}}">{{key}} :</label>
+								<select id="{{key}}" name="{{key}}">
+									{% for item in value %}
+										<option value="{{item}}">{{item}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						{% endfor %}
+					</div>
+
+					<div class="num_cols">
+						{% for key, value in num_cols.items() %}
+							<div class="input-container">
+								<label for="{{ key }}">{{ key }}:</label>
+								<input type="text" value="{{ value }}" id="{{ key }}" name="{{ key }}" placeholder="{{ key }}">
+							</div>
+						{% endfor %}
+					</div>
+
+					<button type="submit">Predict Risk</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MBS PREDICTION APP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #cac0c0;
+            
+        }
+
+        .results {
+            background-color: #cac0c0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 10px;      
+        }
+
+        p {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="results">
+        <h1>Predicting MBS Prepayment Risk...</h1>
+
+        <p>The Mortgage Loan Prepayment Risk is : {{ prediction }}%</p>
+    </div>
+
+</body>
+</html>
